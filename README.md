@@ -9,5 +9,10 @@ https://towardsdatascience.com/image-color-identification-with-machine-learning-
 
 An example of the code is the following one
 ```python
-python ColorFinder.py --image_path [path_of_your_image] --color [number_of_colors] --color_number [chosen_color]
+python ColorFinder.py --image_path [path_of_your_image] --color [number_of_colors] --color_number [chosen_color_number]
 ```
+
+And it selects all the squares where the color is dominant wrt the others. 
+An example of the code is reported in __results.txt__ , while in __ColorIdentificationUsingML__ additional features can be found. 
+
+Happy Rainbow! :) 
