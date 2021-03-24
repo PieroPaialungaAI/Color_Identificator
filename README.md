@@ -9,7 +9,7 @@ https://towardsdatascience.com/image-color-identification-with-machine-learning-
 
 An example of the code is the following one
 ```python
-python ColorFinder.py --image_path [path_of_your_image] --color [color_string] --color_number [chosen_color_number]
+python ColorFinder.py --image_path [path_of_your_image] --color [Color String] --color_number [How many colors you have in your image]
 ```
 
 And it selects all the squares where the color is dominant wrt the others. 
