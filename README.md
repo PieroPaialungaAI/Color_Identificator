@@ -3,9 +3,9 @@
 ## Identify the colors of an image and their position, using Python 
 
 In this repository you will find the script to identify the colors of your image and its specific slice. 
-The theoretical background and principles of this work can be found here:
+I've written the theoretical background and principles of this work here:
 
-https://towardsdatascience.com/image-color-identification-with-machine-learning-and-image-processing-using-python-f3dd0606bdca]:
+https://towardsdatascience.com/image-color-identification-with-machine-learning-and-image-processing-using-python-f3dd0606bdca]: 
 
 An example of the code is the following one
 ```python
@@ -13,10 +13,12 @@ python ColorFinder.py --image_path [path_of_your_image] --color [Color String] -
 ```
 
 And it selects all the squares where the color is dominant wrt the others. 
-The application of the code in the example image has reported:
+The application of the code in the example image has been reported:
 ```python
 python ColorFinderByString.py --image_path img1.jpg --color "#231806"  --color_number 10
 ```
+
+The result is in the __results.txt__ file.
 ***
 __NOTE:__ If the _exact color_ is not present in the picture the following message will pop out:
 ```
