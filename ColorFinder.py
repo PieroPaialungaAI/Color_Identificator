@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+# coding: utf-8
+
+# In[ ]:
+
+
 import pandas as pd
 import numpy as np 
 import matplotlib.pyplot as plt 
@@ -74,25 +80,28 @@ def build_summary(image_path,rgb_colors,hex_colors):
         k=k+1
     return sorted_results
 
-def color_to_s(summary,color,print_result=True):
+def color_to_s(summary,chosen_color,print_result=True):
     data_color = summary
-    color_list = data_color.columns.to_list()[1::]
-    colors = data_color[color_list]
-    color_index = colors.columns.tolist().index(color)
+    color_list = np.array(data_color.columns.to_list()[1::])
+    cs = data_color[color_list]
     SLICE_NUMBER = []
     COLOR_V = [] 
-    for i in range(len(colors)):
-        arg_max = np.argmax(colors.loc[i])
-        max_value = np.max(colors.loc[i])
-        if color_index == arg_max :
+    for i in range(len(data_color)):
+        row = np.array(cs.loc[i])
+        arg_max = np.argmax(row)
+        max_value = np.max(row)
+        if chosen_color == color_list[arg_max]:
             SLICE_NUMBER.append(i)
             COLOR_V.append(max_value)
     d = {'Slices':SLICE_NUMBER,'Percentage': COLOR_V}
     f = open("result.txt", "w")
     if print_result == True:
-        for s in range(len(SLICE_NUMBER)):
-            print('Slice selected : '+str(SLICE_NUMBER[s])+ ', Color percentage: %.2f'%(COLOR_V[s]))
-            f.write('Slice selected : '+str(SLICE_NUMBER[s])+ ', Color percentage: %.2f \n  ' %(COLOR_V[s]))
+        if len(SLICE_NUMBER)!=0:
+            for s in range(len(SLICE_NUMBER)):
+                print('Slice selected : '+str(SLICE_NUMBER[s])+ ', Color percentage: %.2f'%(COLOR_V[s]))
+                f.write('Slice selected : '+str(SLICE_NUMBER[s])+ ', Color percentage: %.2f \n  ' %(COLOR_V[s]))
+        else:
+            print('The color you have chosen is not one of the dominant color in this picture')
     f.close()
     #    return d 
     
@@ -102,10 +111,10 @@ def main():
     args = parser.parse_args()
     im_path = args.image_path
     num_of_colors = args.color_number
-    index_color = args.color
+    color = args.color
     palette = ColorExtractor(im_path,num_of_colors)
     data = build_summary(im_path, palette[0],palette[1])
-    chosen_color = palette[1][index_color]
+    chosen_color = color
     color_to_s(data,chosen_color)
     
     
@@ -114,8 +123,8 @@ if __name__=='__main__':
     
     parser = argparse.ArgumentParser(formatter_class = argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument('--image_path',type=str,help = 'Path of the png image'),
-    parser.add_argument('--color',type=int,help = 'Color Number from the palette'),
+    parser.add_argument('--color',type=str,help = 'Chosen Color'),
     parser.add_argument('--color_number',type=int,help = 'Number of colors')
     
     main()
-    
+
