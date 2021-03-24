@@ -19,7 +19,7 @@ python ColorFinderByString.py --image_path img1.jpg --color '#231806' --color_nu
 ```
 ***
 __NOTE:__ If the _exact color_ is not present in the picture the following message will pop out:
-```python
+```
 The color you have chosen is not one of the dominant colos in this picture
 
 ```
