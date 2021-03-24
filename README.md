@@ -13,6 +13,6 @@ python ColorFinder.py --image_path [path_of_your_image] --color [number_of_color
 ```
 
 And it selects all the squares where the color is dominant wrt the others. 
-An example of the code is reported in __results.txt__ , while in __ColorIdentificationUsingML__ additional features can be found. 
+An example of the code is reported in __results.txt__ , while in __ColorIdentificationUsingML.ipynb__ additional features can be found. 
 
 Happy Rainbow! :) 
